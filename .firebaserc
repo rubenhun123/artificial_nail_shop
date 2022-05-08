@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "artificial-nails": {
+      "hosting": {
+        "artificial_nail_shop": [
+          "artificial-nails"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "artificial-nails"
+  }
+}

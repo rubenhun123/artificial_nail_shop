@@ -1,0 +1,46 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page" (onCloseSidenav)="onClose($event, sidenav)" [loggedInUser]="loggedInUser" (onLogout)="logout($event)"></app-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav(sidenav)">
+          <mat-icon>MENU</mat-icon>
+        </button>
+      </div>
+      <div>MŰKÖRÖM APP</div>
+      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+          <li *ngIf="!(loggedInUser)"><a routerLink="/login">Bejelentkezés</a></li>
+          <li *ngIf="(loggedInUser)"><a routerLink="/login" (click)="logout()">Kijelentkezés</a></li>
+          <li><a routerLink="/signup">Regisztráció</a></li>
+          <li><a routerLink="/main">Kezdőlap</a></li>
+          <li><a routerLink="/gallery">Galéria</a></li>
+          <li><a routerLink="/contact">Kontakt</a></li>
+        </ul>
+      </div>
+
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+  <!-- <ng-container [ngSwitch]="page">
+   <ng-container *ngSwitchCase="'main'">
+     <div class="main_component">
+       <app-main></app-main>
+     </div>
+   </ng-container>
+   <ng-container *ngSwitchCase="'gallery'">
+     <app-gallery></app-gallery>
+   </ng-container>
+   <ng-container *ngSwitchDefault="">
+     <app-contact>
+       <h1>Az oldal nem található.</h1>
+     </app-contact>
+   </ng-container>
+ </ng-container> -->
+
+
+
+</mat-sidenav-container>
